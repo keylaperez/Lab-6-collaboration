@@ -18,6 +18,14 @@ def encode(password):
         encoded_password += str(encoded_digit)
     return encoded_password
 
+# Name: Shamsuddin Shaikh
+def decode_password(encoded_password):
+    password = ""
+    for digit in encoded_password:
+        decoded_password = str((int(digit) - 3) % 10)  # shift each digit down by 3 numbers
+        password += decoded_password
+    return password
+
 
 def main():
     while True:
@@ -34,9 +42,12 @@ def main():
                 continue
             encoded_password = encode(password)
             print("Your password has been encoded and stored!")
+            # Main choice 2, Shamsuddin Shaikh
         elif choice == "2":
-            # Placeholder for decoder function
-            print("Decoder function is not implemented yet.")
+            if not encoded_password:
+                print("Please encode a password first (Option 1).")
+            else:
+                print(f"The encoded password is {encoded_password}, and the original password is {decode_password(encoded_password)}.")
         elif choice == "3":
             print("Exiting program.")
             break
